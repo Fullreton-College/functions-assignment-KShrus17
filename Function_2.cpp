@@ -1,5 +1,6 @@
 #include <iostream>
 using namespace std;
+
 // We will use cents for all monetary values. This will let us
 // work with integer, rather than floating-point, variables.
 const int TWINKIE_PRICE = 350;
@@ -13,12 +14,8 @@ int compute_change(int total_paid);
 
 int main()
 {
-      // Declare variables for the amount of money that the user enters,
-    // along with the change that is to be returned to them.
     int money_entered, change;
 
-    // Make sure that monetary values we output are formatted with
-    // two digits after the decimal point.
     cout.setf(ios::fixed);
     cout.setf(ios::showpoint);
     cout.precision(2);
@@ -31,18 +28,39 @@ int main()
 
     // Dispense the twinkie
     cout << "\nEnjoy your deep-fried twinkie. Your change is $"
-         << change/100.0 << endl;
+         << change / 100.0 << endl;
 
     return 0;
 }
 
+// Accept coins from the user until at least TWINKIE_PRICE is reached
 int accept_money()
 {
-  //write your code
+    int total = 0;
+    char coin;
+
+    while (total < TWINKIE_PRICE)
+    {
+        cout << "Insert coin (d= dollar, q=quarter, D=dime, n=nickel): ";
+        cin >> coin;
+
+        switch (coin)
+        {
+            case 'd': total += 100; break;
+            case 'q': total += 25; break;
+            case 'D': total += 10; break;
+            case 'n': total += 5; break;
+            default: cout << "Invalid coin. Try again.\n"; continue;
+        }
+
+        cout << "Total entered so far: $" << total / 100.0 << endl;
+    }
+
+    return total;
 }
 
-int compute_change(int total_paid) 
+// Compute how much change to return
+int compute_change(int total_paid)
 {
-//write your code
+    return total_paid - TWINKIE_PRICE;
 }
-
