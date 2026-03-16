@@ -2,34 +2,23 @@
 #include <cstdlib>
 using namespace std;
 
-/* Define your function here */
+// Function to flip a coin
 string CoinFlip() {
-   int flip = rand() % 2;   // generates 0 or 1
-
-   if (flip == 1) {
-      return "Heads";
-   }
-   else {
-      return "Tails";
-   }
+    int flip = rand() % 2; // 0 or 1
+    return (flip == 1) ? "Heads" : "Tails";
 }
 
 int main() {
-   int numFlips;
-   
-   srand(2);  // Unique seed
+    int numFlips;
+    srand(2); // fixed seed
 
-   cin >> numFlips;
+    cin >> numFlips;
 
-   for (int i = 0; i < numFlips; i++) {
-      cout << CoinFlip();
+    for (int i = 0; i < numFlips; i++) {
+        cout << CoinFlip();
+        if (i != numFlips - 1) cout << " ";
+    }
+    cout << endl;
 
-      if (i < numFlips - 1) {
-         cout << " ";
-      }
-   }
-
-   cout << endl;
-
-   return 0;
+    return 0;
 }
