@@ -5,7 +5,7 @@ using namespace std;
 // Function to flip a coin
 string CoinFlip() {
     int flip = rand() % 2; // 0 or 1
-    return (flip == 1) ? "Heads" : "Tails";
+    return (flip == 1) ? "Heads": "Tails";
 }
 
 int main() {
